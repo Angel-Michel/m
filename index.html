@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>👑 Día de las Coronas | Para Marely</title>
+  <!-- Vista previa bonita al compartir el enlace por WhatsApp -->
+  <meta property="og:title" content="👑 Un detalle real para ti, Marely" />
+  <meta property="og:description" content="Una corona y una carta esperan por ti cuando el reloj llegue a cero..." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-top: #090412;
+      --bg-mid: #170a2e;
+      --bg-bottom: #261047;
+      --gold: #ffd700;
+      --gold-soft: #ffe875;
+      --gold-dark: #b8860b;
+      --pink-accent: #ff7eb3;
+      --glass: rgba(255, 255, 255, 0.07);
+      --glass-border: rgba(255, 215, 0, 0.28);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      min-height: 100dvh;
+      background: radial-gradient(circle at 50% 20%, var(--bg-bottom), var(--bg-mid) 55%, var(--bg-top) 100%);
+      color: #fff;
+      font-family: 'Quicksand', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
+      position: relative;
+      padding: 20px;
+    }
+
+    /* Estrellas sutiles de fondo */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(1.5px 1.5px at 15% 25%, rgba(255, 232, 117, 0.7), transparent),
+        radial-gradient(1px 1px at 72% 18%, rgba(255, 255, 255, 0.6), transparent),
+        radial-gradient(2px 2px at 84% 62%, rgba(255, 215, 0, 0.5), transparent),
+        radial-gradient(1.5px 1.5px at 28% 78%, rgba(255, 126, 179, 0.6), transparent),
+        radial-gradient(1px 1px at 50% 45%, rgba(255, 255, 255, 0.5), transparent);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Contenedor de lluvia de ramos */
+    #lluvia-flores {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .ramo {
+      position: absolute;
+      top: -60px;
+      user-select: none;
+      will-change: transform;
+      animation: caerRamo linear forwards;
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.45));
+    }
+
+    @keyframes caerRamo {
+      0% {
+        transform: translate3d(0, -10vh, 0) rotate(0deg);
+      }
+      50% {
+        transform: translate3d(var(--drift), 50vh, 0) rotate(180deg);
+      }
+      100% {
+        transform: translate3d(calc(var(--drift) * -0.5), 112vh, 0) rotate(360deg);
+      }
+    }
+
+    /* Tarjeta principal */
+    .escenario {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 430px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .etiqueta-superior {
+      font-size: 0.78rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      background: rgba(255, 215, 0, 0.1);
+      border: 1px solid rgba(255, 215, 0, 0.25);
+      padding: 6px 16px;
+      border-radius: 999px;
+      backdrop-filter: blur(6px);
+    }
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.65rem, 6vw, 2.2rem);
+      font-weight: 800;
+      line-height: 1.2;
+      background: linear-gradient(135deg, #fff6cc 0%, var(--gold) 45%, #ffb700 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 28px rgba(255, 215, 0, 0.25);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .subtitulo {
+      font-size: 0.96rem;
+      color: rgba(255, 255, 255, 0.82);
+      max-width: 340px;
+      line-height: 1.5;
+    }
+
+    /* Zona interactiva de la Corona */
+    .corona-box {
+      position: relative;
+      width: 220px;
+      height: 220px;
+      margin: 6px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 215, 0, 0.14) 0%, rgba(168, 85, 247, 0.08) 55%, transparent 75%);
+      transition: transform 0.35s ease;
+    }
+
+    .corona-box:active {
+      transform: scale(0.95);
+    }
+
+    .anillo-aura {
+      position: absolute;
+      inset: 14px;
+      border-radius: 50%;
+      border: 1.5px dashed rgba(255, 215, 0, 0.4);
+      animation: girarSuave 18s linear infinite;
+    }
+
+    @keyframes girarSuave {
+      to { transform: rotate(360deg); }
+    }
+
+    .corona-svg {
+      width: 145px;
+      height: 145px;
+      transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+      filter: grayscale(0.45) brightness(0.75) drop-shadow(0 0 12px rgba(255, 215, 0, 0.25));
+      animation: flotarCorona 3.5s ease-in-out infinite;
+    }
+
+    .corona-box.desbloqueada .corona-svg {
+      filter: grayscale(0) brightness(1.08) drop-shadow(0 0 28px rgba(255, 215, 0, 0.85));
+      transform: scale(1.08);
+    }
+
+    @keyframes flotarCorona {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* Sello de candado */
+    .sello-candado {
+      position: absolute;
+      bottom: 18px;
+      background: rgba(18, 8, 36, 0.88);
+      border: 1.5px solid var(--gold);
+      color: var(--gold-soft);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), 0 0 14px rgba(255, 215, 0, 0.25);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .corona-box.desbloqueada .sello-candado {
+      opacity: 0;
+      transform: scale(0.6);
+      pointer-events: none;
+    }
+
+    /* Vibración cuando intenta abrirla antes de tiempo */
+    .sacudir {
+      animation: sacudirSello 0.45s ease;
+    }
+
+    @keyframes sacudirSello {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-9px) rotate(-3deg); }
+      40% { transform: translateX(9px) rotate(3deg); }
+      60% { transform: translateX(-6px) rotate(-2deg); }
+      80% { transform: translateX(6px) rotate(2deg); }
+    }
+
+    /* Reloj Cuenta Regresiva */
+    .panel-reloj {
+      width: 100%;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 16px 14px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    .panel-reloj p {
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.72);
+      margin-bottom: 10px;
+    }
+
+    .contador-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    .bloque-tiempo {
+      background: rgba(10, 4, 22, 0.65);
+      border: 1px solid rgba(255, 215, 0, 0.18);
+      border-radius: 12px;
+      padding: 10px 4px;
+    }
+
+    .bloque-tiempo span {
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .bloque-tiempo small {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    /* Mensaje flotante de aviso */
+    .aviso-bloqueo {
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: var(--gold-soft);
+      background: rgba(255, 126, 179, 0.12);
+      border: 1px solid rgba(255, 126, 179, 0.35);
+      border-radius: 14px;
+      padding: 10px 16px;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: all 0.35s ease;
+    }
+
+    .aviso-bloqueo.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Botón de reclamar cuando ya es la hora */
+    .btn-reclamar {
+      display: none;
+      width: 100%;
+      padding: 15px 22px;
+      border: none;
+      border-radius: 16px;
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #19082e;
+      background: linear-gradient(135deg, #fff1a8 0%, var(--gold) 50%, #f59e0b 100%);
+      box-shadow: 0 8px 25px rgba(255, 215, 0, 0.45);
+      cursor: pointer;
+      animation: latidoBtn 2s infinite;
+    }
+
+    .btn-reclamar.activo {
+      display: block;
+    }
+
+    @keyframes latidoBtn {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+    }
+
+    /* Modal de la Carta Real */
+    .modal-carta {
+      position: fixed;
+      inset: 0;
+      background: rgba(6, 2, 14, 0.86);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.45s ease;
+    }
+
+    .modal-carta.abierto {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .pergamino {
+      width: 100%;
+      max-width: 420px;
+      max-height: 85dvh;
+      overflow-y: auto;
+      background: linear-gradient(160deg, #1f0d38 0%, #120624 100%);
+      border: 1.5px solid var(--gold);
+      border-radius: 24px;
+      padding: 28px 24px;
+      text-align: center;
+      box-shadow: 0 0 45px rgba(255, 215, 0, 0.3);
+      transform: translateY(20px) scale(0.96);
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .modal-carta.abierto .pergamino {
+      transform: translateY(0) scale(1);
+    }
+
+    .pergamino .corona-mini {
+      font-size: 2.3rem;
+      margin-bottom: 6px;
+    }
+
+    .pergamino h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.35rem;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    .pergamino .texto-carta {
+      font-size: 0.98rem;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.92);
+      text-align: left;
+      margin-bottom: 18px;
+      white-space: pre-line;
+    }
+
+    .firma {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      color: var(--gold-soft);
+      text-align: right;
+      margin-bottom: 20px;
+    }
+
+    .btn-cerrar-carta {
+      background: transparent;
+      border: 1px solid rgba(255, 215, 0, 0.5);
+      color: var(--gold-soft);
+      padding: 10px 22px;
+      border-radius: 12px;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-reset-preview {
+      display: none;
+      margin-top: 6px;
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.45);
+      font-size: 0.75rem;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="lluvia-flores"></div>
+
+  <main class="escenario">
+    <span class="etiqueta-superior">Especial Día de las Coronas</span>
+
+    <h1 id="titulo-principal">Para una verdadera princesa</h1>
+
+    <p class="subtitulo" id="texto-estado">
+      Los ramos ya empezaron a caer para ti, Marely, pero tu corona y tu carta siguen selladas hasta el momento exacto.
+    </p>
+
+    <!-- Corona interactiva -->
+    <div class="corona-box" id="corona-box" role="button" tabindex="0" aria-label="Corona de Marely">
+      <div class="anillo-aura"></div>
+      <svg class="corona-svg" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="oroReal" x1="10" y1="15" x2="110" y2="90" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#FFF3A8" />
+            <stop offset="45%" stop-color="#FFD700" />
+            <stop offset="100%" stop-color="#B8860B" />
+          </linearGradient>
+        </defs>
+        <path d="M16 74L10 32L36 52L60 20L84 52L110 32L104 74H16Z" fill="url(#oroReal)" stroke="#FFF6CC" stroke-width="2" stroke-linejoin="round"/>
+        <rect x="16" y="76" width="88" height="10" rx="5" fill="url(#oroReal)" stroke="#FFF6CC" stroke-width="1.5"/>
+        <circle cx="10" cy="28" r="4.5" fill="#FFE875"/>
+        <circle cx="60" cy="15" r="5.5" fill="#FFE875"/>
+        <circle cx="110" cy="28" r="4.5" fill="#FFE875"/>
+        <circle cx="60" cy="56" r="5" fill="#FF4D94"/>
+        <circle cx="36" cy="61" r="3.5" fill="#A855F7"/>
+        <circle cx="84" cy="61" r="3.5" fill="#A855F7"/>
+      </svg>
+
+      <div class="sello-candado" id="sello-candado">
+        <span>🔒</span>
+        <span>Sellada</span>
+      </div>
+    </div>
+
+    <!-- Reloj -->
+    <div class="panel-reloj" id="panel-reloj">
+      <p>Tiempo restante para reclamar tu corona:</p>
+      <div class="contador-grid">
+        <div class="bloque-tiempo"><span id="dias">00</span><small>Días</small></div>
+        <div class="bloque-tiempo"><span id="horas">00</span><small>Horas</small></div>
+        <div class="bloque-tiempo"><span id="minutos">00</span><small>Min</small></div>
+        <div class="bloque-tiempo"><span id="segundos">00</span><small>Seg</small></div>
+      </div>
+    </div>
+
+    <!-- Mensaje cuando intenta tocar antes de tiempo -->
+    <div class="aviso-bloqueo" id="aviso-bloqueo">
+      Aún no es momento, princesa… vuelve cuando el reloj llegue a cero. ✨
+    </div>
+
+    <!-- Botón visible al desbloquearse -->
+    <button class="btn-reclamar" id="btn-reclamar">👑 Reclamar Corona y Leer Carta</button>
+    <button class="btn-reset-preview" id="btn-reset-preview">Volver a vista bloqueada (modo prueba)</button>
+  </main>
+
+  <!-- Modal con la carta -->
+  <section class="modal-carta" id="modal-carta" aria-hidden="true">
+    <div class="pergamino">
+      <div class="corona-mini">👑💐</div>
+      <h2>Feliz Día de las Coronas, Marely</h2>
+      <div class="texto-carta" id="contenido-carta">No podía dejar pasar este día sin recordarte lo increíble y especial que eres para mí.
+
+Entre tantas personas en el mundo, tú eres esa chica por la que siempre vale la pena dar lo mejor, cuidar cada detalle y hacer cualquier cosa con tal de verte sonreír.
+
+Hoy te mereces todos los ramos del mundo, pero sobre todo esta corona, porque para mí siempre vas a ser una verdadera princesa. Te quiero muchísimo.</div>
+      <div class="firma">— Con todo mi cariño, Ángel ✨</div>
+      <button class="btn-cerrar-carta" id="btn-cerrar-carta">Guardar mi corona 💛</button>
+    </div>
+  </section>
+
+  <script>
+    // =========================================================================
+    // CONFIGURA AQUÍ LA FECHA Y HORA EXACTA DEL DESBLOQUEO (Año-Mes-DíaTHora:Min:Seg)
+    // Actualmente programado para hoy a medianoche (14 de noviembre de 2026, 00:00:00)
+    // =========================================================================
+    const FECHA_DESBLOQUEO = new Date('2026-11-14T00:00:00');
+
+    const flores = ['💐', '🌹', '🌸', '🌷', '🌺', '✨'];
+    const contenedorLluvia = document.getElementById('lluvia-flores');
+
+    function crearRamo() {
+      const el = document.createElement('span');
+      el.className = 'ramo';
+      el.textContent = flores[Math.floor(Math.random() * flores.length)];
+
+      const size = Math.random() * 18 + 18; // 18px a 36px
+      const left = Math.random() * 100;
+      const duration = Math.random() * 5 + 6; // 6s a 11s
+      const drift = (Math.random() - 0.5) * 90 + 'px';
+      const opacity = Math.random() * 0.45 + 0.5;
+
+      el.style.left = left + 'vw';
+      el.style.fontSize = size + 'px';
+      el.style.animationDuration = duration + 's';
+      el.style.setProperty('--drift', drift);
+      el.style.opacity = opacity;
+
+      contenedorLluvia.appendChild(el);
+      el.addEventListener('animationend', () => el.remove());
+    }
+
+    // Lluvia inicial y continua
+    for (let i = 0; i < 14; i++) {
+      setTimeout(crearRamo, i * 250);
+    }
+    setInterval(crearRamo, 480);
+
+    // Lógica de bloqueo y cuenta regresiva
+    let desbloqueada = false;
+    let modoPrueba = false;
+
+    const coronaBox = document.getElementById('corona-box');
+    const avisoBloqueo = document.getElementById('aviso-bloqueo');
+    const btnReclamar = document.getElementById('btn-reclamar');
+    const panelReloj = document.getElementById('panel-reloj');
+    const textoEstado = document.getElementById('texto-estado');
+    const modalCarta = document.getElementById('modal-carta');
+    const btnCerrarCarta = document.getElementById('btn-cerrar-carta');
+    const btnResetPreview = document.getElementById('btn-reset-preview');
+
+    const mensajesCoquetos = [
+      'Aún no es momento, princesa… vuelve cuando el reloj llegue a cero. ✨',
+      '¡Trampa detectada! El sello real solo se abre en el día de las coronas. 🔒👑',
+      'Paciencia, Marely… lo mejor siempre vale la espera. 💐'
+    ];
+    let indiceMensaje = 0;
+    let timerAviso = null;
+
+    function activarDesbloqueo(esPrueba = false) {
+      desbloqueada = true;
+      modoPrueba = esPrueba;
+      coronaBox.classList.add('desbloqueada');
+      btnReclamar.classList.add('activo');
+      avisoBloqueo.classList.remove('visible');
+      panelReloj.style.display = 'none';
+      textoEstado.textContent = '¡El sello se ha roto! Tu corona y tu carta ya están listas para ti, Marely.';
+      btnResetPreview.style.display = esPrueba ? 'inline-block' : 'none';
+
+      // Ráfaga extra de ramos al desbloquear
+      for (let i = 0; i < 20; i++) {
+        setTimeout(crearRamo, i * 80);
+      }
+    }
+
+    function restaurarBloqueo() {
+      desbloqueada = false;
+      modoPrueba = false;
+      coronaBox.classList.remove('desbloqueada');
+      btnReclamar.classList.remove('activo');
+      panelReloj.style.display = 'block';
+      btnResetPreview.style.display = 'none';
+      textoEstado.textContent = 'Los ramos ya empezaron a caer para ti, Marely, pero tu corona y tu carta siguen selladas hasta el momento exacto.';
+      actualizarReloj();
+    }
+
+    function actualizarReloj() {
+      if (modoPrueba) return;
+
+      const ahora = new Date();
+      const diferencia = FECHA_DESBLOQUEO - ahora;
+
+      if (diferencia <= 0) {
+        if (!desbloqueada) activarDesbloqueo(false);
+        return;
+      }
+
+      const d = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+      const h = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
+      const m = Math.floor((diferencia / 1000 / 60) % 60);
+      const s = Math.floor((diferencia / 1000) % 60);
+
+      document.getElementById('dias').textContent = String(d).padStart(2, '0');
+      document.getElementById('horas').textContent = String(h).padStart(2, '0');
+      document.getElementById('minutos').textContent = String(m).padStart(2, '0');
+      document.getElementById('segundos').textContent = String(s).padStart(2, '0');
+    }
+
+    setInterval(actualizarReloj, 1000);
+    actualizarReloj();
+
+    // Interacción al tocar la corona
+    coronaBox.addEventListener('click', () => {
+      if (desbloqueada) {
+        modalCarta.classList.add('abierto');
+        modalCarta.setAttribute('aria-hidden', 'false');
+        return;
+      }
+
+      coronaBox.classList.remove('sacudir');
+      void coronaBox.offsetWidth;
+      coronaBox.classList.add('sacudir');
+
+      avisoBloqueo.textContent = mensajesCoquetos[indiceMensaje % mensajesCoquetos.length];
+      indiceMensaje++;
+      avisoBloqueo.classList.add('visible');
+
+      clearTimeout(timerAviso);
+      timerAviso = setTimeout(() => {
+        avisoBloqueo.classList.remove('visible');
+      }, 3600);
+    });
+
+    btnReclamar.addEventListener('click', () => {
+      modalCarta.classList.add('abierto');
+      modalCarta.setAttribute('aria-hidden', 'false');
+    });
+
+    btnCerrarCarta.addEventListener('click', () => {
+      modalCarta.classList.remove('abierto');
+      modalCarta.setAttribute('aria-hidden', 'true');
+    });
+
+    modalCarta.addEventListener('click', (e) => {
+      if (e.target === modalCarta) {
+        modalCarta.classList.remove('abierto');
+        modalCarta.setAttribute('aria-hidden', 'true');
+      }
+    });
+
+    // Atajo secreto para Ángel: toca 5 veces el título para probar cómo se ve desbloqueada
+    let toquesTitulo = 0;
+    let timerToques = null;
+    document.getElementById('titulo-principal').addEventListener('click', () => {
+      toquesTitulo++;
+      clearTimeout(timerToques);
+      timerToques = setTimeout(() => { toquesTitulo = 0; }, 2000);
+
+      if (toquesTitulo >= 5) {
+        toquesTitulo = 0;
+        activarDesbloqueo(true);
+      }
+    });
+
+    btnResetPreview.addEventListener('click', restaurarBloqueo);
+  </script>
+</body>
+</html>
