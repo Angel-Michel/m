@@ -354,7 +354,7 @@
       gap: 4px;
     }
 
-    /* Lista rápida de las 4 canciones */
+    /* Lista rápida de las 5 canciones */
     .playlist-box {
       width: 100%;
       background: var(--glass);
@@ -456,13 +456,13 @@
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(8, 2, 6, 0.86);
+      background: rgba(8, 2, 6, 0.88);
       backdrop-filter: blur(10px);
       z-index: 100;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 20px;
+      padding: 18px;
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.35s ease;
@@ -475,17 +475,19 @@
 
     .tarjeta-modal {
       width: 100%;
-      max-width: 425px;
-      max-height: 86dvh;
+      max-width: 440px;
+      max-height: 88dvh;
       overflow-y: auto;
       background: linear-gradient(160deg, #2b091a 0%, #13030b 100%);
       border: 1.5px solid var(--rose-gold);
       border-radius: 24px;
       padding: 26px 22px;
       text-align: center;
-      box-shadow: 0 0 42px rgba(225, 29, 72, 0.3);
+      box-shadow: 0 0 42px rgba(225, 29, 72, 0.32);
       transform: translateY(18px) scale(0.95);
       transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+      scrollbar-width: thin;
+      scrollbar-color: rgba(246, 196, 120, 0.4) transparent;
     }
 
     .modal-overlay.abierto .tarjeta-modal {
@@ -493,7 +495,7 @@
     }
 
     .modal-icono {
-      font-size: 2.5rem;
+      font-size: 2.6rem;
       display: block;
       margin-bottom: 6px;
     }
@@ -510,18 +512,18 @@
 
     .tarjeta-modal h2 {
       font-family: 'Cinzel', serif;
-      font-size: 1.28rem;
+      font-size: 1.32rem;
       color: var(--rose-gold);
-      margin-bottom: 14px;
+      margin-bottom: 16px;
     }
 
     .modal-cuerpo {
-      font-size: 0.95rem;
-      line-height: 1.72;
-      color: rgba(255, 255, 255, 0.92);
+      font-size: 0.96rem;
+      line-height: 1.76;
+      color: rgba(255, 255, 255, 0.93);
       text-align: left;
       white-space: pre-line;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
 
     .vale-chocolate {
@@ -530,7 +532,7 @@
       border: 1.5px dashed var(--rose-gold);
       border-radius: 16px;
       padding: 14px;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
       text-align: center;
     }
 
@@ -553,7 +555,7 @@
 
     .modal-firma {
       font-family: 'Cinzel', serif;
-      font-size: 0.96rem;
+      font-size: 0.98rem;
       color: var(--rose-gold-soft);
       text-align: right;
       margin-bottom: 18px;
@@ -563,7 +565,7 @@
       background: rgba(246, 196, 120, 0.14);
       border: 1px solid rgba(246, 196, 120, 0.55);
       color: var(--rose-gold-soft);
-      padding: 10px 24px;
+      padding: 11px 26px;
       border-radius: 12px;
       font-family: 'Quicksand', sans-serif;
       font-weight: 700;
@@ -581,7 +583,7 @@
     <header>
       <h1>Todo lo que me gusta de ti</h1>
       <p class="subtitulo">
-        Armé este rincón con tus historias favoritas, rosas, chocolates y las canciones que me recuerdan a ti. Toca cada tarjeta para descubrir lo que dice.
+        Armé este rincón con tus historias favoritas, rosas, chocolates y las canciones que me recuerdan a ti. Toca cada tarjeta para leer lo que escribí para ti.
       </p>
     </header>
 
@@ -661,10 +663,10 @@
       </button>
     </section>
 
-    <!-- Playlist completa -->
+    <!-- Playlist completa con tus 5 archivos -->
     <div class="seccion-titulo">
       <h2>Tus canciones</h2>
-      <span>4 pistas</span>
+      <span>5 pistas</span>
     </div>
 
     <section class="playlist-box" id="playlist-box">
@@ -694,8 +696,8 @@
         <div class="track-izq">
           <span class="track-num">3</span>
           <div class="track-meta">
-            <strong>24:7</strong>
-            <small>DannyLux · Eliminar a la dama villana</small>
+            <strong>Miras</strong>
+            <small>Calissto · Eliminar a la dama villana</small>
           </div>
         </div>
         <span class="track-pill">▶ Poner</span>
@@ -707,6 +709,17 @@
           <div class="track-meta">
             <strong>Girasoles</strong>
             <small>Calissto · Rosas y chocolates</small>
+          </div>
+        </div>
+        <span class="track-pill">▶ Poner</span>
+      </button>
+
+      <button type="button" class="track-item" data-track="4">
+        <div class="track-izq">
+          <span class="track-num">5</span>
+          <div class="track-meta">
+            <strong>24:7</strong>
+            <small>DannyLux · Carta especial para ti</small>
           </div>
         </div>
         <span class="track-pill">▶ Poner</span>
@@ -737,7 +750,7 @@
   <audio id="reproductor-audio" preload="metadata"></audio>
 
   <script>
-    // Cada tarjeta tiene su propia canción distinta
+    // Las 5 canciones del repositorio conectadas sin repetirse
     const pistas = [
       {
         titulo: 'Lo que me gusta de ti',
@@ -752,16 +765,22 @@
         inicioSegundos: 0
       },
       {
-        titulo: '24:7',
-        artista: 'DannyLux · Siempre de tu lado',
-        archivo: 'pensar.mp4',
-        inicioSegundos: 110
+        titulo: 'Miras',
+        artista: 'Calissto · Eliminar a la dama villana',
+        archivo: 'miras.mp4',
+        inicioSegundos: 0
       },
       {
         titulo: 'Girasoles',
-        artista: 'Calissto · Rosas y chocolates para ti',
+        artista: 'Calissto · Rosas y chocolates',
         archivo: 'girasol.mp4',
         inicioSegundos: 0
+      },
+      {
+        titulo: '24:7',
+        artista: 'DannyLux · Para ti siempre',
+        archivo: 'pensar.mp4',
+        inicioSegundos: 110
       }
     ];
 
@@ -772,7 +791,7 @@
         titulo: 'Todo lo que me gusta de ti',
         pistaIndex: 0,
         mostrarVale: false,
-        texto: 'No tienes idea de cuánto disfruto conocerte y ponerle atención a cada detalle que te hace ser tú, Marely.\n\nMe encanta la emoción con la que hablas de tus historias favoritas, la forma en la que te brillan los ojos cuando algo te entusiasma y esa vibra tan auténtica que tienes. Contigo hasta la plática más sencilla se vuelve mi momento favorito del día.\n\nQuise armar este espacio pensando únicamente en ti, porque cuando alguien te importa de verdad, recordar sus gustos y cuidar cada detalle nace solo.'
+        texto: 'No tienes idea de cuánto disfruto conocerte de verdad y ponerle atención a cada pequeño detalle que te hace ser tú, Marely. Me encanta la emoción con la que platicas tus cosas, la luz que traes cuando algo te entusiasma y esa autenticidad tan tuya que hace imposible no sonreír cuando estoy contigo.\n\nA veces las personas pasan por la vida sin detenerse a notar lo que hace especial a alguien, pero contigo me pasa exactamente lo contrario: cada plática, cada gesto y cada gusto tuyo se me quedan grabados porque me importas de verdad. Contigo hasta el momento más sencillo se transforma en mi parte favorita del día.\n\nQuise construir este pequeño rincón pensando únicamente en ti, para que cada vez que entres aquí recuerdes lo valiosa que eres, lo bonito que se siente tenerte cerca y lo mucho que me gusta verte feliz.'
       },
       pecados: {
         icono: '⚔️',
@@ -780,15 +799,15 @@
         titulo: 'Mi único pecado capital',
         pistaIndex: 1,
         mostrarVale: false,
-        texto: 'Sé perfectamente que Los 7 Pecados Capitales es uno de tus animes favoritos, así que era imposible no dedicarle su propio espacio aquí.\n\nSi quererte sin medida, perderme cada vez que me miras y querer cuidarte en todo momento fuera un pecado capital, yo aceptaría feliz cualquier condena con tal de seguir a tu lado.\n\nMás allá de cualquier historia de fantasía, lo que siento por ti es completamente real: eres esa persona por la que siempre vale la pena dar lo mejor de mí.'
+        texto: 'Sé perfectamente que Los 7 Pecados Capitales es uno de tus animes favoritos, así que era imposible armar algo para ti sin darle su propio espacio especial aquí. Me encanta ver cómo te atrapan las historias llenas de lealtad, promesas que se cumplen sin importar el tiempo y sentimientos que son más fuertes que cualquier obstáculo.\n\nPor eso elegí esta canción para acompañarlo: porque si quererte sin medida, perderme cada vez que me miras y querer cuidarte en todo momento fuera un pecado capital, yo aceptaría feliz cualquier condena con tal de seguir a tu lado.\n\nMás allá de cualquier historia de fantasía o animación, lo que siento por ti es completamente real: eres esa persona por la que siempre vale la pena dar lo mejor de mí, cuidar cada detalle y demostrar con hechos lo muchísimo que te quiero.'
       },
       manhwa: {
         icono: '📖',
-        subtag: 'Manhwa: Eliminar a la dama villana · 24:7',
+        subtag: 'Manhwa: Eliminar a la dama villana · Canción: Miras',
         titulo: 'Siempre de tu lado',
         pistaIndex: 2,
         mostrarVale: false,
-        texto: 'Me acordé muchísimo de "Eliminar a la dama villana" porque sé cuánto te atrapan esas historias intensas donde la protagonista siente que todo el mundo y el destino están escritos en su contra.\n\nPor eso quise poner esta canción aquí: para recordarte que en la vida real tú nunca vas a estar sola frente a nada. Sin importar qué tan pesado se ponga un día o qué tan complicada parezca la historia, yo siempre voy a estar de tu lado 24/7.\n\nSi pudiera reescribir cualquier mal rato para cambiártelo por tranquilidad y una sonrisa, lo haría sin pensarlo dos veces.'
+        texto: 'Me acordé muchísimo de "Eliminar a la dama villana" porque sé cuánto te gustan esas historias intensas donde la protagonista siente que todo el mundo y hasta el propio destino están escritos en su contra, pero aun así guarda un corazón enorme que merece ser comprendido y cuidado.\n\nQuise poner la canción "Miras" justo en esta tarjeta por lo que provocas en mí: tus ojos son mi mayor debilidad. Bastan unos segundos mirándote para que se me olvide el ruido del mundo entero, y en esa mirada siempre encuentro razones para querer verte tranquila y contenta.\n\nQuiero que tengas la certeza de que en la vida real tú nunca vas a estar sola frente a nada. Sin importar qué tan pesado se ponga un día o qué tan complicada parezca la historia, yo siempre voy a estar de tu lado para escucharte, apoyarte y hacer todo lo que esté en mis manos por cambiarte cualquier mal rato por una sonrisa.'
       },
       dulces: {
         icono: '🌹🍫',
@@ -796,15 +815,15 @@
         titulo: 'Rosas y chocolates para ti',
         pistaIndex: 3,
         mostrarVale: true,
-        texto: 'Esta canción me recuerda mucho a ese sentimiento de ir caminando, ver flores bonitas y pensar inmediatamente en llevártelas hasta donde estés solo para ver cómo sonríes.\n\nSé que las rosas y los chocolates son de tus debilidades favoritas, así que no quería que este detalle se quedara únicamente en palabras dentro de una pantalla.\n\nGuarda este vale porque la próxima vez que nos veamos pienso cumplirlo tal cual, con tus chocolates favoritos y flores hechas especialmente para ti.'
+        texto: 'Esta canción me recuerda muchísimo a ese sentimiento tan bonito de ir caminando, ver flores en el camino y pensar inmediatamente en llevártelas hasta donde estés solo para ver la expresión de tu cara cuando sonríes.\n\nSé que las rosas y los chocolates son de tus debilidades favoritas, y aunque quise ponerlos aquí entre pétalos y música, la verdad es que ninguna pantalla se compara con dártelos en persona y verte disfrutar algo rico.\n\nPor eso dejé este vale oficial guardado aquí abajo: porque la próxima vez que nos veamos pienso cumplirlo tal cual, con tus chocolates favoritos y flores elegidas especialmente para ti, sin excusas y con todo el cariño del mundo.'
       },
       cartaFinal: {
         icono: '💌🌹',
-        subtag: 'Para ti, de principio a fin · Calissto',
-        titulo: 'Para la chica que me tiene encantado',
-        pistaIndex: 0,
+        subtag: 'Canción: 24:7 · Para la chica que me encanta',
+        titulo: 'Para Marely, con todo mi corazón',
+        pistaIndex: 4,
         mostrarVale: false,
-        texto: 'Marely, realmente te quiero muchísimo, más de lo que a veces alcanzo a decirte en persona.\n\nTe confieso algo muy sincero: tus ojos son mi mayor debilidad. Bastan unos segundos mirándote para que se me olvide el mundo entero, y te esperaría todo el tiempo que fuera necesario con tal de seguir compartiendo momentos bonitos contigo.\n\nQuise reunir tus canciones, tu anime, tu manhwa favorito, rosas y chocolates en un solo rincón para recordarte que eres la única chica por la que haría cualquier cosa con tal de verte feliz.'
+        texto: 'Marely, realmente te quiero muchísimo, incluso más de lo que a veces alcanzo a expresarte cuando estamos frente a frente. Quise hacerte esta página porque sentía que un mensaje normal se quedaba corto para todo lo que me haces sentir y para lo especial que eres en mi vida.\n\nTe confieso algo muy sincero: tus ojos siguen siendo mi mayor debilidad, y tu sonrisa es ese lugar al que siempre quiero volver. Si hiciera falta esperar todo el tiempo del mundo para compartir momentos bonitos contigo, lo esperaría sin dudarlo un segundo, porque cuando alguien vale tanto como tú, cada instante tiene sentido.\n\nJunté tus canciones, tu anime, tu manhwa favorito, rosas y chocolates en un solo lugar para recordarte una cosa muy simple pero verdadera: eres la única chica por la que haría cualquier cosa con tal de verte feliz hoy y siempre.'
       }
     };
 
