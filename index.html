@@ -3,22 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>👑 Día de las Coronas | Para Marely</title>
-  <meta property="og:title" content="👑 Un detalle real para ti, Marely" />
-  <meta property="og:description" content="Toca los ramos alrededor de tu corona mientras llega el momento..." />
+  <title>🌹 El Universo de Marely | Para ti</title>
+  <meta property="og:title" content="🌹 Un rincón hecho para ti, Marely" />
+  <meta property="og:description" content="Tus historias favoritas, rosas, chocolates y las canciones que me recuerdan a ti..." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-top: #090412;
-      --bg-mid: #170a2e;
-      --bg-bottom: #261047;
-      --gold: #ffd700;
-      --gold-soft: #ffe875;
-      --pink-accent: #ff7eb3;
-      --glass: rgba(255, 255, 255, 0.07);
-      --glass-border: rgba(255, 215, 0, 0.28);
+      --bg-top: #0b0308;
+      --bg-mid: #1e0713;
+      --bg-bottom: #310b1f;
+      --rose-gold: #f6c478;
+      --rose-gold-soft: #ffe2b0;
+      --crimson: #e11d48;
+      --pink-glow: #ff6b9d;
+      --chocolate: #5c3324;
+      --glass: rgba(255, 255, 255, 0.06);
+      --glass-border: rgba(246, 196, 120, 0.26);
     }
 
     * {
@@ -30,33 +32,33 @@
 
     body {
       min-height: 100dvh;
-      background: radial-gradient(circle at 50% 20%, var(--bg-bottom), var(--bg-mid) 55%, var(--bg-top) 100%);
+      background: radial-gradient(circle at 50% 15%, var(--bg-bottom), var(--bg-mid) 55%, var(--bg-top) 100%);
       color: #fff;
       font-family: 'Quicksand', sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
       overflow-x: hidden;
       position: relative;
-      padding: 20px;
+      padding: 22px 18px 44px;
     }
 
+    /* Destellos sutiles de fondo */
     body::before {
       content: "";
       position: fixed;
       inset: 0;
       background-image:
-        radial-gradient(1.5px 1.5px at 15% 25%, rgba(255, 232, 117, 0.7), transparent),
-        radial-gradient(1px 1px at 72% 18%, rgba(255, 255, 255, 0.6), transparent),
-        radial-gradient(2px 2px at 84% 62%, rgba(255, 215, 0, 0.5), transparent),
-        radial-gradient(1.5px 1.5px at 28% 78%, rgba(255, 126, 179, 0.6), transparent),
-        radial-gradient(1px 1px at 50% 45%, rgba(255, 255, 255, 0.5), transparent);
+        radial-gradient(1.5px 1.5px at 14% 22%, rgba(255, 226, 176, 0.65), transparent),
+        radial-gradient(1.5px 1.5px at 82% 16%, rgba(255, 107, 157, 0.6), transparent),
+        radial-gradient(2px 2px at 86% 68%, rgba(246, 196, 120, 0.45), transparent),
+        radial-gradient(1.5px 1.5px at 22% 76%, rgba(255, 107, 157, 0.55), transparent);
       pointer-events: none;
       z-index: 0;
     }
 
-    #lluvia-flores {
+    /* Lluvia de pétalos y destellos */
+    #lluvia-petalos {
       position: fixed;
       inset: 0;
       pointer-events: none;
@@ -64,16 +66,16 @@
       z-index: 1;
     }
 
-    .ramo {
+    .petalo {
       position: absolute;
-      top: -60px;
+      top: -50px;
       user-select: none;
       will-change: transform;
-      animation: caerRamo linear forwards;
+      animation: caerPetalo linear forwards;
       filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.45));
     }
 
-    @keyframes caerRamo {
+    @keyframes caerPetalo {
       0% {
         transform: translate3d(0, -10vh, 0) rotate(0deg);
       }
@@ -85,297 +87,379 @@
       }
     }
 
-    .escenario {
+    .contenedor {
       position: relative;
       z-index: 10;
       width: 100%;
-      max-width: 430px;
-      text-align: center;
+      max-width: 450px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 16px;
+      gap: 18px;
     }
 
-    .etiqueta-superior {
-      font-size: 0.78rem;
+    .badge-superior {
+      font-size: 0.74rem;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: var(--gold-soft);
-      background: rgba(255, 215, 0, 0.1);
-      border: 1px solid rgba(255, 215, 0, 0.25);
+      color: var(--rose-gold-soft);
+      background: rgba(246, 196, 120, 0.1);
+      border: 1px solid rgba(246, 196, 120, 0.28);
       padding: 6px 16px;
       border-radius: 999px;
       backdrop-filter: blur(6px);
     }
 
+    header {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
     h1 {
       font-family: 'Cinzel', serif;
-      font-size: clamp(1.65rem, 6vw, 2.2rem);
+      font-size: clamp(1.65rem, 6.2vw, 2.25rem);
       font-weight: 800;
       line-height: 1.2;
-      background: linear-gradient(135deg, #fff6cc 0%, var(--gold) 45%, #ffb700 100%);
+      background: linear-gradient(135deg, #fff5e4 0%, var(--rose-gold) 50%, #ff8fab 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 28px rgba(255, 215, 0, 0.25);
-      cursor: pointer;
-      user-select: none;
+      text-shadow: 0 0 28px rgba(255, 107, 157, 0.22);
     }
 
     .subtitulo {
-      font-size: 0.94rem;
+      font-size: 0.93rem;
       color: rgba(255, 255, 255, 0.84);
-      max-width: 350px;
-      line-height: 1.5;
+      line-height: 1.55;
+      max-width: 370px;
     }
 
-    .zona-real {
-      position: relative;
-      width: 290px;
-      height: 245px;
-      margin: 4px 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .corona-box {
-      position: relative;
-      width: 210px;
-      height: 210px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255, 215, 0, 0.16) 0%, rgba(168, 85, 247, 0.08) 55%, transparent 75%);
-      transition: transform 0.35s ease;
-    }
-
-    .corona-box:active {
-      transform: scale(0.95);
-    }
-
-    .anillo-aura {
-      position: absolute;
-      inset: 14px;
-      border-radius: 50%;
-      border: 1.5px dashed rgba(255, 215, 0, 0.42);
-      animation: girarSuave 18s linear infinite;
-    }
-
-    @keyframes girarSuave {
-      to { transform: rotate(360deg); }
-    }
-
-    .corona-svg {
-      width: 140px;
-      height: 140px;
-      transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-      filter: grayscale(0.42) brightness(0.78) drop-shadow(0 0 12px rgba(255, 215, 0, 0.25));
-      animation: flotarCorona 3.5s ease-in-out infinite;
-    }
-
-    .corona-box.desbloqueada .corona-svg {
-      filter: grayscale(0) brightness(1.08) drop-shadow(0 0 28px rgba(255, 215, 0, 0.88));
-      transform: scale(1.08);
-    }
-
-    @keyframes flotarCorona {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-
-    /* Flores y ramos libres sin círculo alrededor */
-    .ramo-guardian {
-      position: absolute;
-      width: 58px;
-      height: 58px;
-      background: none;
-      border: none;
-      box-shadow: none;
-      outline: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.2rem;
-      cursor: pointer;
-      z-index: 15;
-      filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.6)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.55));
-      transition: transform 0.25s ease, filter 0.25s ease;
-      animation: pulsoRamo 3s ease-in-out infinite;
-    }
-
-    .ramo-guardian:hover,
-    .ramo-guardian:active {
-      transform: scale(1.22);
-      filter: drop-shadow(0 0 18px rgba(255, 215, 0, 0.95));
-    }
-
-    .ramo-guardian.leido {
-      filter: drop-shadow(0 0 12px rgba(255, 126, 179, 0.75));
-    }
-
-    .ramo-guardian::after {
-      content: "✨";
-      position: absolute;
-      top: 2px;
-      right: 2px;
-      font-size: 0.78rem;
-      filter: none;
-    }
-
-    .ramo-guardian.leido::after {
-      content: "💛";
-    }
-
-    .ramo-1 { top: 8px; left: 10px; --rot: -15deg; animation-delay: 0s; }
-    .ramo-2 { top: 8px; right: 10px; --rot: 15deg; animation-delay: 0.7s; }
-    .ramo-3 { bottom: 16px; left: 6px; --rot: -10deg; animation-delay: 1.4s; }
-    .ramo-4 { bottom: 16px; right: 6px; --rot: 10deg; animation-delay: 2.1s; }
-
-    @keyframes pulsoRamo {
-      0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)) scale(1); }
-      50% { transform: translateY(-6px) rotate(var(--rot, 0deg)) scale(1.07); }
-    }
-
-    .sello-candado {
-      position: absolute;
-      bottom: 14px;
-      background: rgba(18, 8, 36, 0.9);
-      border: 1.5px solid var(--gold);
-      color: var(--gold-soft);
-      padding: 6px 14px;
-      border-radius: 999px;
-      font-size: 0.82rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), 0 0 14px rgba(255, 215, 0, 0.25);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-
-    .corona-box.desbloqueada .sello-candado {
-      opacity: 0;
-      transform: scale(0.6);
-      pointer-events: none;
-    }
-
-    .sacudir {
-      animation: sacudirSello 0.45s ease;
-    }
-
-    @keyframes sacudirSello {
-      0%, 100% { transform: translateX(0); }
-      20% { transform: translateX(-9px) rotate(-3deg); }
-      40% { transform: translateX(9px) rotate(3deg); }
-      60% { transform: translateX(-6px) rotate(-2deg); }
-      80% { transform: translateX(6px) rotate(2deg); }
-    }
-
-    .pista-ramos {
-      font-size: 0.8rem;
-      color: var(--gold-soft);
-      opacity: 0.88;
-      margin-top: -6px;
-    }
-
-    .panel-reloj {
+    /* Reproductor Principal */
+    .reproductor-card {
       width: 100%;
-      background: var(--glass);
+      background: linear-gradient(145deg, rgba(44, 11, 28, 0.82), rgba(18, 4, 12, 0.9));
       border: 1px solid var(--glass-border);
-      border-radius: 20px;
-      padding: 16px 14px;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+      border-radius: 22px;
+      padding: 16px 18px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45), 0 0 24px rgba(225, 29, 72, 0.14);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
 
-    .panel-reloj p {
-      font-size: 0.82rem;
-      color: rgba(255, 255, 255, 0.72);
-      margin-bottom: 10px;
+    .reproductor-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
     }
 
-    .contador-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
+    .disco-icono {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(225, 29, 72, 0.35), rgba(246, 196, 120, 0.25));
+      border: 1px solid rgba(246, 196, 120, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.45rem;
+      flex-shrink: 0;
     }
 
-    .bloque-tiempo {
-      background: rgba(10, 4, 22, 0.65);
-      border: 1px solid rgba(255, 215, 0, 0.18);
-      border-radius: 12px;
-      padding: 10px 4px;
+    .disco-icono.girando {
+      animation: latidoDisco 1.8s ease-in-out infinite;
     }
 
-    .bloque-tiempo span {
-      display: block;
-      font-family: 'Cinzel', serif;
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: var(--gold);
+    @keyframes latidoDisco {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
     }
 
-    .bloque-tiempo small {
+    .info-pista {
+      flex: 1;
+      min-width: 0;
+      text-align: left;
+    }
+
+    .etiqueta-sonando {
       font-size: 0.68rem;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 1.8px;
+      color: var(--pink-glow);
+      font-weight: 700;
+    }
+
+    .titulo-pista {
+      font-family: 'Cinzel', serif;
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--rose-gold-soft);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .artista-pista {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.68);
+    }
+
+    .btn-play-main {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(135deg, var(--rose-gold-soft), var(--rose-gold));
+      color: #210612;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 16px rgba(246, 196, 120, 0.4);
+      transition: transform 0.2s ease;
+    }
+
+    .btn-play-main:active {
+      transform: scale(0.92);
+    }
+
+    .barra-progreso-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.72rem;
       color: rgba(255, 255, 255, 0.65);
     }
 
-    .aviso-bloqueo {
-      min-height: 44px;
+    .barra-progreso {
+      flex: 1;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .barra-relleno {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--pink-glow), var(--rose-gold));
+      border-radius: 999px;
+      transition: width 0.15s linear;
+    }
+
+    /* Sección: Lo que sé que te gusta */
+    .seccion-titulo {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 4px;
+    }
+
+    .seccion-titulo h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.08rem;
+      color: var(--rose-gold);
+    }
+
+    .seccion-titulo span {
+      font-size: 0.76rem;
+      color: rgba(255, 255, 255, 0.62);
+    }
+
+    .grid-gustos {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .card-gusto {
+      background: var(--glass);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 20px;
+      padding: 16px 14px;
+      text-align: left;
+      color: #fff;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .card-gusto:hover,
+    .card-gusto:active {
+      transform: translateY(-3px);
+      border-color: var(--rose-gold);
+      box-shadow: 0 10px 24px rgba(225, 29, 72, 0.22);
+    }
+
+    .card-gusto.activa {
+      border-color: var(--pink-glow);
+      background: linear-gradient(155deg, rgba(225, 29, 72, 0.22), rgba(246, 196, 120, 0.08));
+    }
+
+    .gusto-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .gusto-emoji {
+      font-size: 1.85rem;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+    }
+
+    .gusto-tag {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(246, 196, 120, 0.14);
+      color: var(--rose-gold-soft);
+      font-weight: 700;
+    }
+
+    .card-gusto h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.95rem;
+      line-height: 1.28;
+      color: #fff;
+    }
+
+    .card-gusto p {
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.72);
+      line-height: 1.38;
+    }
+
+    .gusto-accion {
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--pink-glow);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Lista rápida de las 4 canciones */
+    .playlist-box {
+      width: 100%;
+      background: var(--glass);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 14px;
+      backdrop-filter: blur(10px);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .track-item {
+      width: 100%;
+      background: rgba(12, 3, 8, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 14px;
+      padding: 10px 12px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s ease;
+    }
+
+    .track-item:hover {
+      border-color: rgba(246, 196, 120, 0.4);
+    }
+
+    .track-item.sonando {
+      border-color: var(--rose-gold);
+      background: rgba(225, 29, 72, 0.2);
+    }
+
+    .track-izq {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .track-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      background: rgba(246, 196, 120, 0.14);
+      color: var(--rose-gold);
+      font-size: 0.78rem;
+      font-weight: 700;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.88rem;
-      color: var(--gold-soft);
-      background: rgba(255, 126, 179, 0.12);
-      border: 1px solid rgba(255, 126, 179, 0.35);
-      border-radius: 14px;
-      padding: 10px 16px;
-      opacity: 0;
-      transform: translateY(6px);
-      transition: all 0.35s ease;
+      flex-shrink: 0;
     }
 
-    .aviso-bloqueo.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .btn-reclamar {
-      display: none;
-      width: 100%;
-      padding: 15px 22px;
-      border: none;
-      border-radius: 16px;
-      font-family: 'Cinzel', serif;
-      font-size: 1rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      color: #19082e;
-      background: linear-gradient(135deg, #fff1a8 0%, var(--gold) 50%, #f59e0b 100%);
-      box-shadow: 0 8px 25px rgba(255, 215, 0, 0.45);
-      cursor: pointer;
-      animation: latidoBtn 2s infinite;
-    }
-
-    .btn-reclamar.activo {
+    .track-meta strong {
       display: block;
+      font-size: 0.88rem;
+      color: #fff;
     }
 
-    @keyframes latidoBtn {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.03); }
+    .track-meta small {
+      display: block;
+      font-size: 0.74rem;
+      color: rgba(255, 255, 255, 0.62);
     }
 
+    .track-pill {
+      font-size: 0.72rem;
+      color: var(--rose-gold-soft);
+      white-space: nowrap;
+    }
+
+    /* Botón Carta Final */
+    .btn-carta-final {
+      width: 100%;
+      padding: 16px 20px;
+      border: none;
+      border-radius: 18px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.98rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      color: #210612;
+      background: linear-gradient(135deg, #ffe5ec 0%, var(--rose-gold) 55%, #f59e0b 100%);
+      box-shadow: 0 10px 28px rgba(225, 29, 72, 0.35);
+      cursor: pointer;
+      transition: transform 0.25s ease;
+    }
+
+    .btn-carta-final:active {
+      transform: scale(0.97);
+    }
+
+    /* Modal de Dedicatoria */
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(6, 2, 14, 0.85);
+      background: rgba(8, 2, 6, 0.86);
       backdrop-filter: blur(10px);
       z-index: 100;
       display: flex;
@@ -384,7 +468,7 @@
       padding: 20px;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.38s ease;
+      transition: opacity 0.35s ease;
     }
 
     .modal-overlay.abierto {
@@ -392,270 +476,522 @@
       pointer-events: auto;
     }
 
-    .pergamino {
+    .tarjeta-modal {
       width: 100%;
-      max-width: 410px;
+      max-width: 415px;
       max-height: 85dvh;
       overflow-y: auto;
-      background: linear-gradient(160deg, #210e3b 0%, #110522 100%);
-      border: 1.5px solid var(--gold);
+      background: linear-gradient(160deg, #2b091a 0%, #13030b 100%);
+      border: 1.5px solid var(--rose-gold);
       border-radius: 24px;
       padding: 26px 22px;
       text-align: center;
-      box-shadow: 0 0 42px rgba(255, 215, 0, 0.28);
+      box-shadow: 0 0 42px rgba(225, 29, 72, 0.3);
       transform: translateY(18px) scale(0.95);
-      transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    .modal-overlay.abierto .pergamino {
+    .modal-overlay.abierto .tarjeta-modal {
       transform: translateY(0) scale(1);
     }
 
-    .pergamino.tarjeta-ramo {
-      border-color: rgba(255, 126, 179, 0.75);
-      box-shadow: 0 0 38px rgba(255, 126, 179, 0.25), 0 0 20px rgba(255, 215, 0, 0.15);
-    }
-
-    .icono-modal {
-      font-size: 2.5rem;
-      margin-bottom: 8px;
+    .modal-icono {
+      font-size: 2.6rem;
       display: block;
-    }
-
-    .etiqueta-ramo {
-      display: inline-block;
-      font-size: 0.72rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--pink-accent);
       margin-bottom: 6px;
     }
 
-    .pergamino h2 {
+    .modal-subtag {
+      display: inline-block;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--pink-glow);
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    .tarjeta-modal h2 {
       font-family: 'Cinzel', serif;
-      font-size: 1.28rem;
-      color: var(--gold);
+      font-size: 1.3rem;
+      color: var(--rose-gold);
       margin-bottom: 14px;
     }
 
-    .texto-mensaje {
-      font-size: 0.98rem;
+    .modal-cuerpo {
+      font-size: 0.96rem;
       line-height: 1.72;
-      color: rgba(255, 255, 255, 0.93);
-      text-align: center;
-      margin-bottom: 18px;
-      white-space: pre-line;
-    }
-
-    .texto-carta-final {
+      color: rgba(255, 255, 255, 0.92);
       text-align: left;
+      white-space: pre-line;
+      margin-bottom: 16px;
     }
 
-    .firma {
+    .vale-chocolate {
+      display: none;
+      background: linear-gradient(135deg, rgba(92, 51, 36, 0.65), rgba(225, 29, 72, 0.25));
+      border: 1.5px dashed var(--rose-gold);
+      border-radius: 16px;
+      padding: 14px;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .vale-chocolate.visible {
+      display: block;
+    }
+
+    .vale-chocolate strong {
+      display: block;
       font-family: 'Cinzel', serif;
-      font-size: 0.98rem;
-      color: var(--gold-soft);
+      color: var(--rose-gold-soft);
+      font-size: 0.92rem;
+      margin-bottom: 4px;
+    }
+
+    .vale-chocolate span {
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .modal-firma {
+      font-family: 'Cinzel', serif;
+      font-size: 0.96rem;
+      color: var(--rose-gold-soft);
       text-align: right;
       margin-bottom: 18px;
     }
 
-    .btn-cerrar-modal {
-      background: rgba(255, 215, 0, 0.1);
-      border: 1px solid rgba(255, 215, 0, 0.55);
-      color: var(--gold-soft);
-      padding: 10px 22px;
+    .btn-cerrar {
+      background: rgba(246, 196, 120, 0.14);
+      border: 1px solid rgba(246, 196, 120, 0.55);
+      color: var(--rose-gold-soft);
+      padding: 10px 24px;
       border-radius: 12px;
       font-family: 'Quicksand', sans-serif;
       font-weight: 700;
-      cursor: pointer;
-    }
-
-    .btn-reset-preview {
-      display: none;
-      margin-top: 4px;
-      background: none;
-      border: none;
-      color: rgba(255, 255, 255, 0.45);
-      font-size: 0.75rem;
-      text-decoration: underline;
       cursor: pointer;
     }
   </style>
 </head>
 <body>
 
-  <div id="lluvia-flores"></div>
+  <div id="lluvia-petalos"></div>
 
-  <main class="escenario">
-    <span class="etiqueta-superior">Especial Día de las Coronas</span>
+  <main class="contenedor">
+    <span class="badge-superior">✦ Especial para Marely ✦</span>
 
-    <h1 id="titulo-principal">Para una verdadera princesa</h1>
+    <header>
+      <h1>Todo lo que me gusta de ti</h1>
+      <p class="subtitulo">
+        Armé este rincón con tus historias favoritas, rosas, chocolates y las canciones que me recuerdan a ti. Toca cada tarjeta para descubrir lo que dice.
+      </p>
+    </header>
 
-    <p class="subtitulo" id="texto-estado">
-      Los ramos ya empezaron a caer para ti, Marely, pero tu corona y tu carta siguen selladas hasta el momento exacto.
-    </p>
-
-    <div class="zona-real">
-      <button type="button" class="ramo-guardian ramo-1" data-ramo="0" aria-label="Ramo 1">💐</button>
-      <button type="button" class="ramo-guardian ramo-2" data-ramo="1" aria-label="Ramo 2">🌹</button>
-      <button type="button" class="ramo-guardian ramo-3" data-ramo="2" aria-label="Ramo 3">🌷</button>
-      <button type="button" class="ramo-guardian ramo-4" data-ramo="3" aria-label="Ramo 4">🌸</button>
-
-      <div class="corona-box" id="corona-box" role="button" tabindex="0" aria-label="Corona de Marely">
-        <div class="anillo-aura"></div>
-        <svg class="corona-svg" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="oroReal" x1="10" y1="15" x2="110" y2="90" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#FFF3A8" />
-              <stop offset="45%" stop-color="#FFD700" />
-              <stop offset="100%" stop-color="#B8860B" />
-            </linearGradient>
-          </defs>
-          <path d="M16 74L10 32L36 52L60 20L84 52L110 32L104 74H16Z" fill="url(#oroReal)" stroke="#FFF6CC" stroke-width="2" stroke-linejoin="round"/>
-          <rect x="16" y="76" width="88" height="10" rx="5" fill="url(#oroReal)" stroke="#FFF6CC" stroke-width="1.5"/>
-          <circle cx="10" cy="28" r="4.5" fill="#FFE875"/>
-          <circle cx="60" cy="15" r="5.5" fill="#FFE875"/>
-          <circle cx="110" cy="28" r="4.5" fill="#FFE875"/>
-          <circle cx="60" cy="56" r="5" fill="#FF4D94"/>
-          <circle cx="36" cy="61" r="3.5" fill="#A855F7"/>
-          <circle cx="84" cy="61" r="3.5" fill="#A855F7"/>
-        </svg>
-
-        <div class="sello-candado" id="sello-candado">
-          <span>🔒</span>
-          <span>Sellada</span>
+    <!-- Reproductor Activo -->
+    <section class="reproductor-card" aria-label="Reproductor musical">
+      <div class="reproductor-top">
+        <div class="disco-icono" id="disco-icono">🎵</div>
+        <div class="info-pista">
+          <div class="etiqueta-sonando" id="estado-audio">Listo para sonar</div>
+          <div class="titulo-pista" id="titulo-pista">Lo que me gusta de ti</div>
+          <div class="artista-pista" id="artista-pista">Calissto · Para Marely</div>
         </div>
+        <button type="button" class="btn-play-main" id="btn-play-main" aria-label="Reproducir o pausar">▶</button>
       </div>
-    </div>
-
-    <p class="pista-ramos" id="pista-ramos">✨ Toca los ramos alrededor de tu corona mientras esperas (0/4)</p>
-
-    <div class="panel-reloj" id="panel-reloj">
-      <p>Tiempo restante para reclamar tu corona:</p>
-      <div class="contador-grid">
-        <div class="bloque-tiempo"><span id="dias">00</span><small>Días</small></div>
-        <div class="bloque-tiempo"><span id="horas">00</span><small>Horas</small></div>
-        <div class="bloque-tiempo"><span id="minutos">00</span><small>Min</small></div>
-        <div class="bloque-tiempo"><span id="segundos">00</span><small>Seg</small></div>
+      <div class="barra-progreso-wrap">
+        <span id="tiempo-actual">0:00</span>
+        <div class="barra-progreso" id="barra-progreso">
+          <div class="barra-relleno" id="barra-relleno"></div>
+        </div>
+        <span id="tiempo-total">0:00</span>
       </div>
+    </section>
+
+    <!-- Expediente: Lo que sé que te gusta -->
+    <div class="seccion-titulo">
+      <h2>Lo que sé que te encanta</h2>
+      <span>Toca cada una ✨</span>
     </div>
 
-    <div class="aviso-bloqueo" id="aviso-bloqueo">
-      Aún no es momento, princesa… pero los ramos a su alrededor sí tienen algo que decirte. ✨
+    <section class="grid-gustos">
+      <button type="button" class="card-gusto" data-card="esencia">
+        <div class="gusto-top">
+          <span class="gusto-emoji">✨</span>
+          <span class="gusto-tag">Tu vibra</span>
+        </div>
+        <div>
+          <h3>Tu forma de ser</h3>
+          <p>Me encanta escucharte hablar de todo lo que te emociona.</p>
+        </div>
+        <span class="gusto-accion">▶ Escuchar y leer</span>
+      </button>
+
+      <button type="button" class="card-gusto" data-card="pecados">
+        <div class="gusto-top">
+          <span class="gusto-emoji">⚔️</span>
+          <span class="gusto-tag">Anime fav</span>
+        </div>
+        <div>
+          <h3>Los 7 Pecados Capitales</h3>
+          <p>Si quererte así fuera un pecado, aceptaría cualquier condena.</p>
+        </div>
+        <span class="gusto-accion">▶ Escuchar y leer</span>
+      </button>
+
+      <button type="button" class="card-gusto" data-card="manhwa">
+        <div class="gusto-top">
+          <span class="gusto-emoji">📖</span>
+          <span class="gusto-tag">Manhwa fav</span>
+        </div>
+        <div>
+          <h3>Eliminar a la dama villana</h3>
+          <p>En cualquier historia o mundo, yo siempre estaría de tu lado.</p>
+        </div>
+        <span class="gusto-accion">▶ Escuchar y leer</span>
+      </button>
+
+      <button type="button" class="card-gusto" data-card="dulces">
+        <div class="gusto-top">
+          <span class="gusto-emoji">🌹🍫</span>
+          <span class="gusto-tag">Detalle real</span>
+        </div>
+        <div>
+          <h3>Rosas y Chocolates</h3>
+          <p>Porque te mereces flores bonitas y algo dulce siempre.</p>
+        </div>
+        <span class="gusto-accion">▶ Ver vale y canción</span>
+      </button>
+    </section>
+
+    <!-- Playlist completa -->
+    <div class="seccion-titulo">
+      <h2>Tus canciones</h2>
+      <span>4 pistas</span>
     </div>
 
-    <button class="btn-reclamar" id="btn-reclamar">👑 Reclamar Corona y Leer Carta</button>
-    <button class="btn-reset-preview" id="btn-reset-preview">Volver a vista bloqueada (modo prueba)</button>
+    <section class="playlist-box" id="playlist-box">
+      <button type="button" class="track-item sonando" data-track="0">
+        <div class="track-izq">
+          <span class="track-num">1</span>
+          <div class="track-meta">
+            <strong>Lo que me gusta de ti</strong>
+            <small>Calissto · Todo lo que eres</small>
+          </div>
+        </div>
+        <span class="track-pill">▶ Poner</span>
+      </button>
+
+      <button type="button" class="track-item" data-track="1">
+        <div class="track-izq">
+          <span class="track-num">2</span>
+          <div class="track-meta">
+            <strong>Pecado y Condena</strong>
+            <small>Calissto · Los 7 Pecados Capitales</small>
+          </div>
+        </div>
+        <span class="track-pill">▶ Poner</span>
+      </button>
+
+      <button type="button" class="track-item" data-track="2">
+        <div class="track-izq">
+          <span class="track-num">3</span>
+          <div class="track-meta">
+            <strong>24:7</strong>
+            <small>DannyLux · Rosas y chocolates</small>
+          </div>
+        </div>
+        <span class="track-pill">▶ Poner</span>
+      </button>
+
+      <button type="button" class="track-item" data-track="3">
+        <div class="track-izq">
+          <span class="track-num">4</span>
+          <div class="track-meta">
+            <strong>Girasoles</strong>
+            <small>Calissto · Tu mirada y mi carta</small>
+          </div>
+        </div>
+        <span class="track-pill">▶ Poner</span>
+      </button>
+    </section>
+
+    <button type="button" class="btn-carta-final" id="btn-carta-final">
+      💌 Abrir Carta Especial para Marely
+    </button>
   </main>
 
-  <section class="modal-overlay" id="modal-ramo" aria-hidden="true">
-    <div class="pergamino tarjeta-ramo">
-      <span class="icono-modal" id="ramo-icono">💐</span>
-      <span class="etiqueta-ramo" id="ramo-contador">Ramo 1 de 4</span>
-      <h2 id="ramo-titulo">Lo mucho que te quiero</h2>
-      <div class="texto-mensaje" id="ramo-texto"></div>
-      <div class="firma">— Para ti, Marely 💛</div>
-      <button class="btn-cerrar-modal" id="btn-cerrar-ramo">Guardar este ramo ✨</button>
+  <!-- Modal para tarjetas y carta final -->
+  <section class="modal-overlay" id="modal-detalle" aria-hidden="true">
+    <div class="tarjeta-modal">
+      <span class="modal-icono" id="modal-icono">🌹</span>
+      <span class="modal-subtag" id="modal-subtag">Dedicado a Marely</span>
+      <h2 id="modal-titulo">Título</h2>
+      <div class="modal-cuerpo" id="modal-cuerpo"></div>
+      <div class="vale-chocolate" id="vale-chocolate">
+        <strong>🎟️ VALE OFICIAL POR ROSAS Y CHOCOLATES</strong>
+        <span>Válido por tus chocolates favoritos y flores en nuestra próxima salida. Sin fecha de vencimiento.</span>
+      </div>
+      <div class="modal-firma">— Con todo mi cariño, Ángel ✨</div>
+      <button type="button" class="btn-cerrar" id="btn-cerrar-modal">Guardar este detalle 💛</button>
     </div>
   </section>
 
-  <section class="modal-overlay" id="modal-carta" aria-hidden="true">
-    <div class="pergamino">
-      <span class="icono-modal">👑💐</span>
-      <h2>Feliz Día de las Coronas, Marely</h2>
-      <div class="texto-mensaje texto-carta-final" id="contenido-carta">Llegó el momento y esta corona por fin es tuya.
-
-No quería que pasara este día sin recordarte lo muchísimo que te quiero. Eres esa chica por la que siempre vale la pena dar lo mejor, cuidar cada detalle y esperar todo el tiempo que sea necesario, porque cuando alguien vale tanto como tú, cada segundo tiene sentido.
-
-Tus ojos siguen siendo mi mayor debilidad y tu sonrisa mi lugar favorito. Hoy te mereces todos los ramos del mundo, pero sobre todo esta corona, porque para mí siempre vas a ser una verdadera princesa.</div>
-      <div class="firma">— Con todo mi cariño, Ángel ✨</div>
-      <button class="btn-cerrar-modal" id="btn-cerrar-carta">Guardar mi corona 💛</button>
-    </div>
-  </section>
+  <!-- Elemento de audio oculto para reproducir los .mp4 -->
+  <audio id="reproductor-audio" preload="metadata"></audio>
 
   <script>
-    const FECHA_DESBLOQUEO = new Date('2026-11-14T00:00:00');
-
-    const mensajesRamos = [
+    // Pistas enlazadas a los nombres exactos de tu repositorio
+    const pistas = [
       {
-        icono: '💐',
-        titulo: 'Lo mucho que te quiero',
-        texto: 'No tienes idea de cuánto te quiero, Marely.\n\nLlegaste para darle un brillo distinto a mis días, y cada pequeño detalle que hago por ti nace de lo más sincero de mi corazón. Eres lo más bonito que me pudo pasar.'
+        titulo: 'Lo que me gusta de ti',
+        artista: 'Calissto · Para Marely',
+        archivo: 'lo_que_me_gusta.mp4',
+        inicioSegundos: 0
       },
       {
-        icono: '🌹',
-        titulo: 'Mi mayor debilidad',
-        texto: 'Te confieso un secreto mientras el reloj sigue corriendo:\n\nTus ojos son mi mayor debilidad. Bastan unos segundos mirándote para que se me olvide el mundo entero y me quede completamente perdido en ti.'
+        titulo: 'Pecado y Condena',
+        artista: 'Calissto · Los 7 Pecados Capitales',
+        archivo: 'pecado.mp4',
+        inicioSegundos: 0
       },
       {
-        icono: '🌷',
-        titulo: 'Todo el tiempo del mundo',
-        texto: 'Si este reloj tardara días, meses o toda la vida en llegar a cero, yo te esperaría todo el tiempo que sea necesario.\n\nPorque cuando una mujer vale tanto como tú, la espera nunca pesa; al contrario, es un privilegio.'
+        titulo: '24:7',
+        artista: 'DannyLux · Rosas cada mañana',
+        archivo: 'pensar.mp4',
+        inicioSegundos: 110 // Inicia directo en la parte tierna de las rosas (1:50)
       },
       {
-        icono: '🌸',
-        titulo: 'Mi verdadera princesa',
-        texto: 'Estos ramos solo son el adelanto de lo que mereces.\n\nAunque la corona siga sellada unos instantes más, para mí no hace falta ningún reloj para saber que eres la única princesa de mi historia.'
+        titulo: 'Girasoles',
+        artista: 'Calissto · Tus ojos y tu sonrisa',
+        archivo: 'girasol.mp4',
+        inicioSegundos: 0
       }
     ];
 
-    const ramosLeidos = new Set();
-    const botonesRamo = document.querySelectorAll('.ramo-guardian');
-    const pistaRamos = document.getElementById('pista-ramos');
-    const modalRamo = document.getElementById('modal-ramo');
-    const btnCerrarRamo = document.getElementById('btn-cerrar-ramo');
+    const dedicatorias = {
+      esencia: {
+        icono: '✨',
+        subtag: 'Canción: Lo que me gusta de ti · Calissto',
+        titulo: 'Todo lo que me gusta de ti',
+        pistaIndex: 0,
+        mostrarVale: false,
+        texto: 'No tienes idea de cuánto disfruto conocerte y ponerle atención a cada cosa que te gusta, Marely.\n\nMe encanta la emoción con la que hablas de tus historias favoritas, tu forma tan auténtica de ser y cómo logras que cualquier momento a tu lado se sienta especial. Esta página existe solo porque tú eres tú.'
+      },
+      pecados: {
+        icono: '⚔️',
+        subtag: 'Anime: Los 7 Pecados Capitales · Pecado y Condena',
+        titulo: 'Mi único pecado capital',
+        pistaIndex: 1,
+        mostrarVale: false,
+        texto: 'Sé que Los 7 Pecados Capitales es uno de tus animes favoritos, así que no podía faltar aquí.\n\nSi quererte sin medida y perderme cada vez que me miras fuera un pecado capital, yo aceptaría feliz cualquier condena con tal de seguir cuidándote y viéndote sonreír.'
+      },
+      manhwa: {
+        icono: '📖',
+        subtag: 'Manhwa: Eliminar a la dama villana',
+        titulo: 'Siempre de tu lado',
+        pistaIndex: 1,
+        mostrarVale: false,
+        texto: 'Me acordé muchísimo de "Eliminar a la dama villana" porque sé cuánto te atrapan esas historias donde todo parece estar escrito en contra.\n\nQuiero que sepas que en la vida real, sin importar qué tan complicado se ponga el mundo o la historia, yo siempre voy a estar de tu lado para apoyarte, cuidarte y hacer todo lo que esté en mis manos por verte feliz.'
+      },
+      dulces: {
+        icono: '🌹🍫',
+        subtag: 'Canción: 24:7 · DannyLux',
+        titulo: 'Rosas y chocolates para ti',
+        pistaIndex: 2,
+        mostrarVale: true,
+        texto: 'Sé que las rosas y los chocolates son de tus debilidades favoritas, así que quise dejarte este detalle por escrito.\n\nMientras suena esta parte de la canción, guarda este vale porque la próxima vez que nos veamos pienso cumplirlo tal cual.'
+      },
+      cartaFinal: {
+        icono: '💌🌹',
+        subtag: 'Canción: Girasoles · Calissto',
+        titulo: 'Para la chica que me tiene encantado',
+        pistaIndex: 3,
+        mostrarVale: false,
+        texto: 'Marely, realmente te quiero muchísimo.\n\nTe confieso algo: tus ojos son mi mayor debilidad. Bastan unos segundos mirándote para que se me olvide todo lo demás, y te esperaría todo el tiempo que fuera necesario con tal de compartir momentos bonitos contigo.\n\nQuise juntar tus canciones, tu anime, tu manhwa favorito, rosas y chocolates en un solo lugar para recordarte que eres la única chica por la que haría cualquier detalle con tal de verte sonreír.'
+      }
+    };
 
-    botonesRamo.forEach((btn) => {
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const idx = Number(btn.dataset.ramo);
-        const data = mensajesRamos[idx];
+    const audio = document.getElementById('reproductor-audio');
+    const btnPlayMain = document.getElementById('btn-play-main');
+    const discoIcono = document.getElementById('disco-icono');
+    const estadoAudio = document.getElementById('estado-audio');
+    const tituloPista = document.getElementById('titulo-pista');
+    const artistaPista = document.getElementById('artista-pista');
+    const barraProgreso = document.getElementById('barra-progreso');
+    const barraRelleno = document.getElementById('barra-relleno');
+    const tiempoActualEl = document.getElementById('tiempo-actual');
+    const tiempoTotalEl = document.getElementById('tiempo-total');
+    const trackItems = document.querySelectorAll('.track-item');
 
-        ramosLeidos.add(idx);
-        btn.classList.add('leido');
-        pistaRamos.textContent = ramosLeidos.size === 4
-          ? '💛 ¡Descubriste los 4 ramos! Ahora solo espera a tu corona...'
-          : `✨ Toca los ramos alrededor de tu corona (${ramosLeidos.size}/4 descubiertos)`;
+    let indiceActual = 0;
+    let pistaCargada = false;
 
-        document.getElementById('ramo-icono').textContent = data.icono;
-        document.getElementById('ramo-contador').textContent = `Ramo ${idx + 1} de 4`;
-        document.getElementById('ramo-titulo').textContent = data.titulo;
-        document.getElementById('ramo-texto').textContent = data.texto;
+    function formatearTiempo(seg) {
+      if (!isFinite(seg) || seg < 0) return '0:00';
+      const m = Math.floor(seg / 60);
+      const s = Math.floor(seg % 60);
+      return `${m}:${String(s).padStart(2, '0')}`;
+    }
 
-        for (let i = 0; i < 6; i++) {
-          setTimeout(crearRamo, i * 90);
-        }
-
-        modalRamo.classList.add('abierto');
-        modalRamo.setAttribute('aria-hidden', 'false');
+    function actualizarUIPlaylist(idx) {
+      trackItems.forEach((item, i) => {
+        item.classList.toggle('sonando', i === idx);
+        const pill = item.querySelector('.track-pill');
+        pill.textContent = i === idx ? '♪ Activa' : '▶ Poner';
       });
-    });
+    }
 
-    btnCerrarRamo.addEventListener('click', () => {
-      modalRamo.classList.remove('abierto');
-      modalRamo.setAttribute('aria-hidden', 'true');
-    });
+    function cargarYReproducir(idx, autoPlay = true) {
+      const pista = pistas[idx];
+      indiceActual = idx;
+      pistaCargada = true;
 
-    modalRamo.addEventListener('click', (e) => {
-      if (e.target === modalRamo) {
-        modalRamo.classList.remove('abierto');
-        modalRamo.setAttribute('aria-hidden', 'true');
+      tituloPista.textContent = pista.titulo;
+      artistaPista.textContent = pista.artista;
+      actualizarUIPlaylist(idx);
+
+      audio.src = pista.archivo;
+      audio.load();
+
+      const iniciar = () => {
+        if (pista.inicioSegundos > 0 && audio.duration > pista.inicioSegundos) {
+          audio.currentTime = pista.inicioSegundos;
+        }
+        if (autoPlay) {
+          audio.play().catch(() => {
+            estadoAudio.textContent = 'Toca ▶ para escuchar';
+          });
+        }
+      };
+
+      if (audio.readyState >= 1) {
+        iniciar();
+      } else {
+        audio.addEventListener('loadedmetadata', iniciar, { once: true });
+      }
+    }
+
+    btnPlayMain.addEventListener('click', () => {
+      if (!pistaCargada) {
+        cargarYReproducir(0, true);
+        return;
+      }
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
       }
     });
 
-    const flores = ['💐', '🌹', '🌸', '🌷', '🌺', '✨'];
-    const contenedorLluvia = document.getElementById('lluvia-flores');
+    audio.addEventListener('play', () => {
+      btnPlayMain.textContent = '❚❚';
+      discoIcono.classList.add('girando');
+      estadoAudio.textContent = 'Sonando ahora';
+    });
 
-    function crearRamo() {
+    audio.addEventListener('pause', () => {
+      btnPlayMain.textContent = '▶';
+      discoIcono.classList.remove('girando');
+      estadoAudio.textContent = 'En pausa';
+    });
+
+    audio.addEventListener('timeupdate', () => {
+      tiempoActualEl.textContent = formatearTiempo(audio.currentTime);
+      tiempoTotalEl.textContent = formatearTiempo(audio.duration);
+      if (audio.duration > 0) {
+        barraRelleno.style.width = `${(audio.currentTime / audio.duration) * 100}%`;
+      }
+    });
+
+    audio.addEventListener('ended', () => {
+      const siguiente = (indiceActual + 1) % pistas.length;
+      cargarYReproducir(siguiente, true);
+    });
+
+    barraProgreso.addEventListener('click', (e) => {
+      if (!audio.duration) return;
+      const rect = barraProgreso.getBoundingClientRect();
+      const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+      audio.currentTime = ratio * audio.duration;
+    });
+
+    trackItems.forEach((item) => {
+      item.addEventListener('click', () => {
+        const idx = Number(item.dataset.track);
+        cargarYReproducir(idx, true);
+      });
+    });
+
+    // Modales de gustos y carta final
+    const modalDetalle = document.getElementById('modal-detalle');
+    const modalIcono = document.getElementById('modal-icono');
+    const modalSubtag = document.getElementById('modal-subtag');
+    const modalTitulo = document.getElementById('modal-titulo');
+    const modalCuerpo = document.getElementById('modal-cuerpo');
+    const valeChocolate = document.getElementById('vale-chocolate');
+    const btnCerrarModal = document.getElementById('btn-cerrar-modal');
+    const cardsGusto = document.querySelectorAll('.card-gusto');
+
+    function abrirDedicatoria(clave, elementoCard = null) {
+      const data = dedicatorias[clave];
+      if (!data) return;
+
+      cardsGusto.forEach((c) => c.classList.remove('activa'));
+      if (elementoCard) elementoCard.classList.add('activa');
+
+      modalIcono.textContent = data.icono;
+      modalSubtag.textContent = data.subtag;
+      modalTitulo.textContent = data.titulo;
+      modalCuerpo.textContent = data.texto;
+      valeChocolate.classList.toggle('visible', data.mostrarVale);
+
+      cargarYReproducir(data.pistaIndex, true);
+
+      for (let i = 0; i < 8; i++) {
+        setTimeout(crearPetalo, i * 85);
+      }
+
+      modalDetalle.classList.add('abierto');
+      modalDetalle.setAttribute('aria-hidden', 'false');
+    }
+
+    cardsGusto.forEach((card) => {
+      card.addEventListener('click', () => {
+        abrirDedicatoria(card.dataset.card, card);
+      });
+    });
+
+    document.getElementById('btn-carta-final').addEventListener('click', () => {
+      abrirDedicatoria('cartaFinal');
+    });
+
+    btnCerrarModal.addEventListener('click', () => {
+      modalDetalle.classList.remove('abierto');
+      modalDetalle.setAttribute('aria-hidden', 'true');
+    });
+
+    modalDetalle.addEventListener('click', (e) => {
+      if (e.target === modalDetalle) {
+        modalDetalle.classList.remove('abierto');
+        modalDetalle.setAttribute('aria-hidden', 'true');
+      }
+    });
+
+    // Lluvia suave de pétalos y chocolates
+    const simbolos = ['🌹', '🌸', '✨', '🍫', '🌷'];
+    const contenedorPetalos = document.getElementById('lluvia-petalos');
+
+    function crearPetalo() {
       const el = document.createElement('span');
-      el.className = 'ramo';
-      el.textContent = flores[Math.floor(Math.random() * flores.length)];
+      el.className = 'petalo';
+      el.textContent = simbolos[Math.floor(Math.random() * simbolos.length)];
 
-      const size = Math.random() * 18 + 18;
+      const size = Math.random() * 16 + 16;
       const left = Math.random() * 100;
-      const duration = Math.random() * 5 + 6;
+      const duration = Math.random() * 5 + 6.5;
       const drift = (Math.random() - 0.5) * 90 + 'px';
-      const opacity = Math.random() * 0.45 + 0.5;
+      const opacity = Math.random() * 0.4 + 0.45;
 
       el.style.left = left + 'vw';
       el.style.fontSize = size + 'px';
@@ -663,138 +999,14 @@ Tus ojos siguen siendo mi mayor debilidad y tu sonrisa mi lugar favorito. Hoy te
       el.style.setProperty('--drift', drift);
       el.style.opacity = opacity;
 
-      contenedorLluvia.appendChild(el);
+      contenedorPetalos.appendChild(el);
       el.addEventListener('animationend', () => el.remove());
     }
 
-    for (let i = 0; i < 14; i++) {
-      setTimeout(crearRamo, i * 250);
+    for (let i = 0; i < 12; i++) {
+      setTimeout(crearPetalo, i * 280);
     }
-    setInterval(crearRamo, 480);
-
-    let desbloqueada = false;
-    let modoPrueba = false;
-
-    const coronaBox = document.getElementById('corona-box');
-    const avisoBloqueo = document.getElementById('aviso-bloqueo');
-    const btnReclamar = document.getElementById('btn-reclamar');
-    const panelReloj = document.getElementById('panel-reloj');
-    const textoEstado = document.getElementById('texto-estado');
-    const modalCarta = document.getElementById('modal-carta');
-    const btnCerrarCarta = document.getElementById('btn-cerrar-carta');
-    const btnResetPreview = document.getElementById('btn-reset-preview');
-
-    const mensajesCoquetos = [
-      'Aún no es momento, princesa… pero toca los ramos que rodean tu corona. ✨',
-      '¡Casi! El sello real solo se abre cuando el reloj llegue a cero. 🔒👑',
-      'Paciencia, Marely… te esperaría toda la vida, y ya falta muy poco. 💐'
-    ];
-    let indiceMensaje = 0;
-    let timerAviso = null;
-
-    function activarDesbloqueo(esPrueba = false) {
-      desbloqueada = true;
-      modoPrueba = esPrueba;
-      coronaBox.classList.add('desbloqueada');
-      btnReclamar.classList.add('activo');
-      avisoBloqueo.classList.remove('visible');
-      panelReloj.style.display = 'none';
-      textoEstado.textContent = '¡El sello se ha roto! Tu corona y tu carta ya están listas para ti, Marely.';
-      btnResetPreview.style.display = esPrueba ? 'inline-block' : 'none';
-
-      for (let i = 0; i < 22; i++) {
-        setTimeout(crearRamo, i * 80);
-      }
-    }
-
-    function restaurarBloqueo() {
-      desbloqueada = false;
-      modoPrueba = false;
-      coronaBox.classList.remove('desbloqueada');
-      btnReclamar.classList.remove('activo');
-      panelReloj.style.display = 'block';
-      btnResetPreview.style.display = 'none';
-      textoEstado.textContent = 'Los ramos ya empezaron a caer para ti, Marely, pero tu corona y tu carta siguen selladas hasta el momento exacto.';
-      actualizarReloj();
-    }
-
-    function actualizarReloj() {
-      if (modoPrueba) return;
-
-      const ahora = new Date();
-      const diferencia = FECHA_DESBLOQUEO - ahora;
-
-      if (diferencia <= 0) {
-        if (!desbloqueada) activarDesbloqueo(false);
-        return;
-      }
-
-      const d = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-      const h = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
-      const m = Math.floor((diferencia / 1000 / 60) % 60);
-      const s = Math.floor((diferencia / 1000) % 60);
-
-      document.getElementById('dias').textContent = String(d).padStart(2, '0');
-      document.getElementById('horas').textContent = String(h).padStart(2, '0');
-      document.getElementById('minutos').textContent = String(m).padStart(2, '0');
-      document.getElementById('segundos').textContent = String(s).padStart(2, '0');
-    }
-
-    setInterval(actualizarReloj, 1000);
-    actualizarReloj();
-
-    coronaBox.addEventListener('click', () => {
-      if (desbloqueada) {
-        modalCarta.classList.add('abierto');
-        modalCarta.setAttribute('aria-hidden', 'false');
-        return;
-      }
-
-      coronaBox.classList.remove('sacudir');
-      void coronaBox.offsetWidth;
-      coronaBox.classList.add('sacudir');
-
-      avisoBloqueo.textContent = mensajesCoquetos[indiceMensaje % mensajesCoquetos.length];
-      indiceMensaje++;
-      avisoBloqueo.classList.add('visible');
-
-      clearTimeout(timerAviso);
-      timerAviso = setTimeout(() => {
-        avisoBloqueo.classList.remove('visible');
-      }, 3600);
-    });
-
-    btnReclamar.addEventListener('click', () => {
-      modalCarta.classList.add('abierto');
-      modalCarta.setAttribute('aria-hidden', 'false');
-    });
-
-    btnCerrarCarta.addEventListener('click', () => {
-      modalCarta.classList.remove('abierto');
-      modalCarta.setAttribute('aria-hidden', 'true');
-    });
-
-    modalCarta.addEventListener('click', (e) => {
-      if (e.target === modalCarta) {
-        modalCarta.classList.remove('abierto');
-        modalCarta.setAttribute('aria-hidden', 'true');
-      }
-    });
-
-    let toquesTitulo = 0;
-    let timerToques = null;
-    document.getElementById('titulo-principal').addEventListener('click', () => {
-      toquesTitulo++;
-      clearTimeout(timerToques);
-      timerToques = setTimeout(() => { toquesTitulo = 0; }, 2000);
-
-      if (toquesTitulo >= 5) {
-        toquesTitulo = 0;
-        activarDesbloqueo(true);
-      }
-    });
-
-    btnResetPreview.addEventListener('click', restaurarBloqueo);
+    setInterval(crearPetalo, 550);
   </script>
 </body>
 </html>
